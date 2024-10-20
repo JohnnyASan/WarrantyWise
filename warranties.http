@@ -39,7 +39,7 @@ content-type: application/json
 
 
 ### Delete warranty
-DELETE http://localhost:3000/warranties/671489ea1ac97c3157c51cd6 HTTP/1.1
+DELETE http://localhost:3000/warranties/67148ab01ac97c3157c51cd7 HTTP/1.1
 
 
 ###
@@ -85,5 +85,5 @@ content-type: application/json
 }
 
 ### Delete warranty
-DELETE https://warrantywise.onrender.com/warranties/6701f809edb99c6202db3624 HTTP/1.1
+DELETE https://warrantywise.onrender.com/warranties/67148ac9a73d22104afe4aa6 HTTP/1.1
 

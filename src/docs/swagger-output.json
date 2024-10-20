@@ -50,19 +50,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "modelNumber": {
                   "example": "any"
                 },
-                "lastName": {
+                "purchaseDate": {
+                  "example": "any"
+                },
+                "company": {
+                  "example": "any"
+                },
+                "details": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "phone": {
                   "example": "any"
                 },
-                "birthday": {
+                "linkToFileClaim": {
                   "example": "any"
                 }
               }
@@ -124,19 +130,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "modelNumber": {
                   "example": "any"
                 },
-                "lastName": {
+                "purchaseDate": {
+                  "example": "any"
+                },
+                "company": {
+                  "example": "any"
+                },
+                "details": {
                   "example": "any"
                 },
                 "email": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "phone": {
                   "example": "any"
                 },
-                "birthday": {
+                "linkToFileClaim": {
                   "example": "any"
                 }
               }
