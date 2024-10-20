@@ -37,30 +37,38 @@ const postRecord = async (req, res) => {
             in: 'body',
             description: 'Create a new warranty',
             schema: {
-                $firstName: 'John',
-                $lastName: 'Doe',
-                $email: 'email@example.com',
-                $favoriteColor: 'blue',
-                $birthday: '01/01/2000'
+                $modelNumber: '123MODEL',
+                $purchaseDate: '10/19/2024',
+                $durationInYears: '5',
+                $company: 'WarrantyWise',
+                $details: 'Full coverage for any reason',
+                $email: 'john.doe@email.com',
+                $phone: '123-456-7890'
+                $linkToFileClaim: 'file.claim.com'
             }
         }
         #swagger.responses[200] = {
             description: 'Create a new warranty.',
             schema: {
-                firstName: 'John',
-                lastName: 'Doe',
-                email: 'email@example.com',
-                favoriteColor: 'blue',
-                birthday: '01/01/2000'
+                modelNumber: '123MODEL',
+                purchaseDate: '10/19/2024',
+                durationInYears: '5',
+                company: 'WarrantyWise',
+                details: 'Full coverage for any reason',
+                email: 'john.doe@email.com',
+                phone: '123-456-7890'
+                linkToFileClaim: 'file.claim.com'
             }
          } 
     */
     const warranty = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        modelNumber: req.body.modelNumber,
+        purchaseDate: req.body.purchaseDate,
+        company: req.body.company,
+        details: req.body.details,
         email: req.body.email,
-        favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        phone: req.body.phone,
+        linkToFileClaim: req.body.linkToFileClaim
       };
       const response = await mongodb.getDb().db('warrantywise').collection('warranties').insertOne(warranty);
       if (response.acknowledged) {
@@ -80,31 +88,39 @@ const putRecord = async (req, res) => {
             in: 'body',
             description: 'Update a warranty',
             schema: {
-                $firstName: 'John',
-                $lastName: 'Doe',
-                $email: 'email@example.com',
-                $favoriteColor: 'blue',
-                $birthday: '01/01/2000'
+                $modelNumber: '123MODEL',
+                $purchaseDate: '10/19/2024',
+                $durationInYears: '5',
+                $company: 'WarrantyWise',
+                $details: 'Full coverage for any reason',
+                $email: 'john.doe@email.com',
+                $phone: '123-456-7890'
+                $linkToFileClaim: 'file.claim.com'
             }
         }
         #swagger.responses[200] = {
             description: 'Update a warranty.',
             schema: {
-                firstName: 'John',
-                lastName: 'Doe',
-                email: 'email@example.com',
-                favoriteColor: 'blue',
-                birthday: '01/01/2000'
+                modelNumber: '123MODEL',
+                purchaseDate: '10/19/2024',
+                durationInYears: '5',
+                company: 'WarrantyWise',
+                details: 'Full coverage for any reason',
+                email: 'john.doe@email.com',
+                phone: '123-456-7890'
+                linkToFileClaim: 'file.claim.com'
             }
         } 
     */
     const userId = new ObjectId(req.params.id);
     const warranty = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        modelNumber: req.body.modelNumber,
+        purchaseDate: req.body.purchaseDate,
+        company: req.body.company,
+        details: req.body.details,
         email: req.body.email,
-        favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        phone: req.body.phone,
+        linkToFileClaim: req.body.linkToFileClaim
     };
     const response = await mongodb
         .getDb()
