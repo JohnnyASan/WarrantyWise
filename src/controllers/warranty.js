@@ -39,7 +39,7 @@ const postRecord = async (req, res) => {
             schema: {
                 $modelNumber: '123MODEL',
                 $purchaseDate: '10/19/2024',
-                $durationInYears: '5',
+                $durationInYears: 5,
                 $company: 'WarrantyWise',
                 $details: 'Full coverage for any reason',
                 $email: 'john.doe@email.com',
@@ -52,7 +52,7 @@ const postRecord = async (req, res) => {
             schema: {
                 modelNumber: '123MODEL',
                 purchaseDate: '10/19/2024',
-                durationInYears: '5',
+                durationInYears: 5,
                 company: 'WarrantyWise',
                 details: 'Full coverage for any reason',
                 email: 'john.doe@email.com',
@@ -90,7 +90,7 @@ const putRecord = async (req, res) => {
             schema: {
                 $modelNumber: '123MODEL',
                 $purchaseDate: '10/19/2024',
-                $durationInYears: '5',
+                $durationInYears: 5,
                 $company: 'WarrantyWise',
                 $details: 'Full coverage for any reason',
                 $email: 'john.doe@email.com',
@@ -103,7 +103,7 @@ const putRecord = async (req, res) => {
             schema: {
                 modelNumber: '123MODEL',
                 purchaseDate: '10/19/2024',
-                durationInYears: '5',
+                durationInYears: 5,
                 company: 'WarrantyWise',
                 details: 'Full coverage for any reason',
                 email: 'john.doe@email.com',
