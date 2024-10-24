@@ -12,6 +12,8 @@ const getAll = async (req, res) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists);
     });
+
+    if (!result.acknowledged) throw Error('Something happened when trying to get all warranty records');
 };
 
 const getById = async (req, res) => {
@@ -26,6 +28,8 @@ const getById = async (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists[0]);
     });
+
+    if (!result.acknowledged) throw Error('Something happened while trying to get warranty by Id');
 };
 
 const postRecord = async (req, res) => {
@@ -38,12 +42,12 @@ const postRecord = async (req, res) => {
             description: 'Create a new warranty',
             schema: {
                 $modelNumber: '123MODEL',
-                $purchaseDate: '10/19/2024',
+                $purchaseDate: '2024/10/19',
                 $durationInYears: 5,
                 $company: 'WarrantyWise',
                 $details: 'Full coverage for any reason',
                 $email: 'john.doe@email.com',
-                $phone: '123-456-7890'
+                $phone: '1234567890'
                 $linkToFileClaim: 'file.claim.com'
             }
         }
@@ -51,12 +55,12 @@ const postRecord = async (req, res) => {
             description: 'Create a new warranty.',
             schema: {
                 modelNumber: '123MODEL',
-                purchaseDate: '10/19/2024',
+                purchaseDate: '2024/10/19',
                 durationInYears: 5,
                 company: 'WarrantyWise',
                 details: 'Full coverage for any reason',
                 email: 'john.doe@email.com',
-                phone: '123-456-7890'
+                phone: '1234567890'
                 linkToFileClaim: 'file.claim.com'
             }
          } 
@@ -74,7 +78,7 @@ const postRecord = async (req, res) => {
       if (response.acknowledged) {
         res.status(201).json(response);
       } else {
-        res.status(500).json(response.error || 'Some error occurred while creating the warranty.');
+        throw Error(response.error || 'Some error occurred while creating the warranty.');
       }
 };
 
@@ -89,12 +93,12 @@ const putRecord = async (req, res) => {
             description: 'Update a warranty',
             schema: {
                 $modelNumber: '123MODEL',
-                $purchaseDate: '10/19/2024',
+                $purchaseDate: '2024/10/19',
                 $durationInYears: 5,
                 $company: 'WarrantyWise',
                 $details: 'Full coverage for any reason',
                 $email: 'john.doe@email.com',
-                $phone: '123-456-7890'
+                $phone: '1234567890'
                 $linkToFileClaim: 'file.claim.com'
             }
         }
@@ -102,12 +106,12 @@ const putRecord = async (req, res) => {
             description: 'Update a warranty.',
             schema: {
                 modelNumber: '123MODEL',
-                purchaseDate: '10/19/2024',
+                purchaseDate: '2024/10/19',
                 durationInYears: 5,
                 company: 'WarrantyWise',
                 details: 'Full coverage for any reason',
                 email: 'john.doe@email.com',
-                phone: '123-456-7890'
+                phone: '1234567890'
                 linkToFileClaim: 'file.claim.com'
             }
         } 
@@ -131,7 +135,7 @@ const putRecord = async (req, res) => {
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occurred while updating the warranty.');
+        throw Error(response.error || 'Some error occurred while updating the warranty.');
     }
 }
 
@@ -146,7 +150,7 @@ const deleteRecord = async (req, res) => {
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occurred while deleting the warranty.');
+        throw Error(response.error || 'Some error occurred while deleting the warranty.');
     }
 }
 

@@ -13,13 +13,13 @@ content-type: application/json
 
 {
     "modelNumber": "123MODEL",
-    "purchaseDate": "10/19/2024",
+    "purchaseDate": "2024/10/19",
     "durationInYears": 5,
     "company": "WarrantyWise",
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
-    "phone": "123-456-7890",
-    "linkToFileClaim": "file.claim.com"
+    "phone": "1234567890",
+    "linkToFileClaim": "https://www.file.claim.com"
 }
 
 ### Update warranty
@@ -28,12 +28,12 @@ content-type: application/json
 
 {
     "modelNumber": "123MODELT",
-    "purchaseDate": "10/19/2024",
+    "purchaseDate": "2024/10/19",
     "durationInYears": 5,
     "company": "WarrantyWise",
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
-    "phone": "123-456-7890",
+    "phone": "1234567890",
     "linkToFileClaim": "file.claim.com"
 }
 
@@ -53,7 +53,7 @@ GET https://warrantywise.onrender.com/warranties HTTP/1.1
 
 ### Get By ID
 
-GET https://warrantywise.onrender.com/warranties/66f1c80632da1a7d886f0fd1 HTTP/1.1
+GET https://warrantywise.onrender.com/warranties/67148cf34e2e46f8674fec23 HTTP/1.1
 
 ### Create warranty
 POST https://warrantywise.onrender.com/warranties HTTP/1.1
@@ -61,29 +61,29 @@ content-type: application/json
 
 {
     "modelNumber": "123MODEL",
-    "purchaseDate": "10/19/2024",
+    "purchaseDate": "2024/10/19",
     "durationInYears": 5,
     "company": "WarrantyWise",
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
-    "phone": "123-456-7890",
+    "phone": "1234567890",
     "linkToFileClaim": "file.claim.com"
 }
 ### Update warranty
-PUT https://warrantywise.onrender.com/warranties/6701f809edb99c6202db3624 HTTP/1.1
+PUT https://warrantywise.onrender.com/warranties/67148cf34e2e46f8674fec23 HTTP/1.1
 content-type: application/json
 
 {
     "modelNumber": "123MODELT",
-    "purchaseDate": "10/19/2024",
+    "purchaseDate": "2024/10/19",
     "durationInYears": 5,
     "company": "WarrantyWise",
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
-    "phone": "123-456-7890",
+    "phone": "1234567890",
     "linkToFileClaim": "file.claim.com"
 }
 
 ### Delete warranty
-DELETE https://warrantywise.onrender.com/warranties/67148ac9a73d22104afe4aa6 HTTP/1.1
+DELETE https://warrantywise.onrender.com/warranties/67148cf34e2e46f8674fec23 HTTP/1.1
 

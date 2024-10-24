@@ -18,7 +18,7 @@ const initDb = callback => {
     callback(null, _db);
     })
     .catch(err => {
-    callback(err);
+        throw new MongoError(err);
     });
 };
   
