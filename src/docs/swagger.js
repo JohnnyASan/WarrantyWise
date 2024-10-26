@@ -5,7 +5,7 @@ const doc = {
     title: 'Warranties API',
     description: 'Api used for saving, updated, reading, and deleting warranties.'
   },
-  host: 'https://warrantywise.onrender.com',
+  host: 'warrantywise.onrender.com',
   schemes: ['https']
 };
 

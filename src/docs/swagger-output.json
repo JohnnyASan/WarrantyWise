@@ -5,7 +5,7 @@
     "description": "Api used for saving, updated, reading, and deleting warranties.",
     "version": "1.0.0"
   },
-  "host": "https://warrantywise.onrender.com",
+  "host": "warrantywise.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -79,8 +79,8 @@
           "201": {
             "description": "Created"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "422": {
+            "description": "Unprocessable Entity"
           }
         }
       }
@@ -159,8 +159,8 @@
           "204": {
             "description": "No Content"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "422": {
+            "description": "Unprocessable Entity"
           }
         }
       },
@@ -182,9 +182,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
