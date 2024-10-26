@@ -2,9 +2,33 @@ const express = require('express');
 require('express-async-errors');
 const app = express();
 const mongoDb = require('./src/utils/mongodb');
-
+const HttpStatus = require('http-status-codes');
 
 const port = 3000;
+
+class MongoError extends Error {
+  constructor(message, mongoError) {
+    super(message);
+    this.mongoError = mongoError;
+    this.name = 'MongoError'
+  }
+}
+
+class NotFoundError extends Error {
+  constructor(message, notFoundError) {
+    super(message);
+    this.notFoundError = notFoundError;
+    this.name = 'NotFoundError'
+  }
+}
+
+class ValidationError extends Error {
+  constructor(message, validationErrors) {
+    super(message);
+    this.validationErrors = validationErrors;
+    this.name = 'ValidationError'
+  }
+}
 
 
 app.use(express.json());

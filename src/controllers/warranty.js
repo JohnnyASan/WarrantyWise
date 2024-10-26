@@ -6,14 +6,17 @@ const getAll = async (req, res) => {
     // #swagger.summary = 'Get All Warranties'
     // #swagger.description = 'Gets all warranties in the collection. This endpoint is NOT paginated.'
     // #swagger.tags = ['Warranties']
+    try {
+        const result = await mongodb.getDb().db('warrantywise').collection('warranties').find();
+        result.toArray().then((lists) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(lists);
+        });
+    }
+    catch {
+        throw Error('Something happened when trying to get all warranty records');
+    }
 
-    const result = await mongodb.getDb().db('warrantywise').collection('warranties').find();
-    result.toArray().then((lists) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists);
-    });
-
-    if (!result.acknowledged) throw Error('Something happened when trying to get all warranty records');
 };
 
 const getById = async (req, res) => {
@@ -22,14 +25,18 @@ const getById = async (req, res) => {
     // #swagger.tags = ['Warranties']
     // #swagger.parameters['id'] = { description: 'ID of the warranty to be retrieved.' }
 
-    const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db('warrantywise').collection('warranties').find({ _id: userId });
-    result.toArray().then((lists) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists[0]);
-    });
+    try {
+        const userId = new ObjectId(req.params.id);
+        const result = await mongodb.getDb().db('warrantywise').collection('warranties').find({ _id: userId });
+        result.toArray().then((lists) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(lists[0]);
+        });
 
-    if (!result.acknowledged) throw Error('Something happened while trying to get warranty by Id');
+    }
+    catch {
+        throw Error('Something happened while trying to get warranty by Id');
+    }
 };
 
 const postRecord = async (req, res) => {
@@ -65,6 +72,7 @@ const postRecord = async (req, res) => {
             }
          } 
     */
+   try {
     const warranty = {
         modelNumber: req.body.modelNumber,
         purchaseDate: req.body.purchaseDate,
@@ -74,12 +82,15 @@ const postRecord = async (req, res) => {
         phone: req.body.phone,
         linkToFileClaim: req.body.linkToFileClaim
       };
-      const response = await mongodb.getDb().db('warrantywise').collection('warranties').insertOne(warranty);
-      if (response.acknowledged) {
-        res.status(201).json(response);
-      } else {
-        throw Error(response.error || 'Some error occurred while creating the warranty.');
-      }
+    const response = await mongodb.getDb().db('warrantywise').collection('warranties').insertOne(warranty);
+    
+    res.status(201).json(response);
+      
+   }
+   catch {
+    throw Error(response.error || 'Some error occurred while creating the warranty.');
+   }
+    
 };
 
 const putRecord = async (req, res) => {    
@@ -126,15 +137,16 @@ const putRecord = async (req, res) => {
         phone: req.body.phone,
         linkToFileClaim: req.body.linkToFileClaim
     };
-    const response = await mongodb
-        .getDb()
-        .db('warrantywise')
-        .collection('warranties')
-        .replaceOne({ _id: userId }, warranty);
-    console.log(response);
-    if (response.modifiedCount > 0) {
+    try {
+        const response = await mongodb
+            .getDb()
+            .db('warrantywise')
+            .collection('warranties')
+            .replaceOne({ _id: userId }, warranty);
+        console.log(response);
+
         res.status(204).send();
-    } else {
+    } catch {
         throw Error(response.error || 'Some error occurred while updating the warranty.');
     }
 }
@@ -144,12 +156,13 @@ const deleteRecord = async (req, res) => {
     // #swagger.description = 'Deletes a warranty from the warranties collection for the provided ID.'
     // #swagger.tags = ['Warranties']
     //  #swagger.parameters['id'] = { description: 'ID of the warranty to be deleted.' }
-    const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db('warrantywise').collection('warranties').deleteOne({ _id: userId }, true);
-    console.log(response);
-    if (response.deletedCount > 0) {
+    try {
+        const userId = new ObjectId(req.params.id);
+        const response = await mongodb.getDb().db('warrantywise').collection('warranties').deleteOne({ _id: userId }, true);
+        console.log(response);
+
         res.status(204).send();
-    } else {
+    } catch {
         throw Error(response.error || 'Some error occurred while deleting the warranty.');
     }
 }

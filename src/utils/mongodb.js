@@ -14,8 +14,8 @@ const initDb = callback => {
     }
     mongoClient.connect(connStr)
     .then(client => {
-    _db = client;
-    callback(null, _db);
+        _db = client;
+        callback(null, _db);
     })
     .catch(err => {
         throw new MongoError(err);
