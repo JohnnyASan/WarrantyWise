@@ -13,11 +13,11 @@ const getAuth = async (req, res) => {
   );
 };
 
-const oauthCallback = async ({ query: { code } }, res) => {
+const oAuthCallback = async ({ query: { code } }, res) => {
   const body = {
     client_id: process.env.GITHUB_OAUTH_CLIENT_ID,
     client_secret: process.env.GITHUB_OAUTH_SECRET,
-    code,
+    access_token: code,
   };
   const opts = { headers: { accept: 'application/json' } };
   axios
@@ -35,5 +35,5 @@ const oauthCallback = async ({ query: { code } }, res) => {
 module.exports = {
     getIndex,
     getAuth,
-    oauthCallback
+    oAuthCallback
 }
