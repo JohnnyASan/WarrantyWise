@@ -30,8 +30,7 @@ class ValidationError extends Error {
   }
 }
 
-
-app.use(express.static('static'));
+app.use(express.static(__dirname + '/static'));
 app.use(express.json());
 app.use('/', require('./src/routes'));
 

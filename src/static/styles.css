@@ -9,6 +9,10 @@ body {
     background: rgb(71, 43, 186);
     background: linear-gradient(0deg, rgba(71, 43, 186, 1) 0%, rgba(44, 25, 121, 1) 100%);
   }
+
+  .h1 {
+    color: yellow;
+  }
   
   .content {
     background: white;
