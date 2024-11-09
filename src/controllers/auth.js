@@ -2,6 +2,7 @@ require('dotenv').config();
 const mongodb = require('../utils/mongodb');
 var ObjectId = require('mongodb').ObjectId;
 const path = require('path');
+const axios = require('axios');
 
 const getIndex = async (req, res) => {
   res.sendFile(path.join(__dirname, '../static/index.html'));
