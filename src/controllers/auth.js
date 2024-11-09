@@ -18,7 +18,7 @@ const oAuthCallback = async ({ query: { code } }, res) => {
   const body = {
     client_id: process.env.GITHUB_OAUTH_CLIENT_ID,
     client_secret: process.env.GITHUB_OAUTH_SECRET,
-    access_token: code,
+    code,
   };
   const opts = { headers: { accept: 'application/json' } };
   axios
@@ -28,7 +28,7 @@ const oAuthCallback = async ({ query: { code } }, res) => {
       // eslint-disable-next-line no-console
       console.log('My token:', token);
 
-      res.redirect(`/?token=${token}`);
+      res.redirect(`/dashboard?token=${token}`);
     })
     .catch((err) => res.status(500).json({ err: err.message }));
 };

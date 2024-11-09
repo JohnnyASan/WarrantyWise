@@ -19,6 +19,24 @@ const getAll = async (req, res) => {
 
 };
 
+const getAllByUserId = async (req, res) => {
+    // #swagger.summary = 'Get All Warranties for a given user.'
+    // #swagger.description = 'Gets all warranties in the collection for a user. This endpoint is NOT paginated.'
+    // #swagger.tags = ['Warranties']
+    try {
+        const user = req.params.access_token;
+        const result = await mongodb.getDb().db('warrantywise').collection('warranties').find();
+        result.toArray().then((lists) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(lists);
+        });
+    }
+    catch {
+        throw Error('Something happened when trying to get all warranty records');
+    }
+
+};
+
 const getById = async (req, res) => {
     // #swagger.summary = 'Get Warranty By ID'
     // #swagger.description = 'Gets a single warranty by the provided ID.'
@@ -169,6 +187,7 @@ const deleteRecord = async (req, res) => {
 
 module.exports = {
     getAll,
+    getAllByUserId,
     getById,
     postRecord,
     putRecord,
