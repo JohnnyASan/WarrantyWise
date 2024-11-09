@@ -19,12 +19,17 @@ const getAll = async (req, res) => {
 
 };
 
+const getDashboard = async (req, res) => {
+    res.sendFile(path.join(__dirname, '../static/dashboard.html'));
+  };
+
 const getAllByUserId = async (req, res) => {
     // #swagger.summary = 'Get All Warranties for a given user.'
     // #swagger.description = 'Gets all warranties in the collection for a user. This endpoint is NOT paginated.'
     // #swagger.tags = ['Warranties']
     try {
-        const user = req.params.access_token;
+        const access_token = req.params.access_token;
+        const user_id = req.params.userId;
         const result = await mongodb.getDb().db('warrantywise').collection('warranties').find();
         result.toArray().then((lists) => {
             res.setHeader('Content-Type', 'application/json');
@@ -186,6 +191,7 @@ const deleteRecord = async (req, res) => {
 }
 
 module.exports = {
+    getDashboard,
     getAll,
     getAllByUserId,
     getById,
