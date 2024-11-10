@@ -5,6 +5,31 @@ const mongoDb = require('./src/utils/mongodb');
 const HttpStatus = require('http-status-codes');
 
 const port = 3000;
+const session = require('express-session'); 
+app.use(session({ 
+  secret: process.env.SESSION_SECRET_KEY, 
+  resave: false, 
+  saveUninitialized: true, 
+  cookie: { secure: true } })
+); 
+
+
+// Middleware to check if user is authenticated 
+function isAuthenticated(req, res, next) { 
+  if (req.session.userId) { 
+    return next(); 
+  } 
+  res.redirect('#'); 
+}
+
+app.get('/logout', (req, res) => { 
+  req.session.destroy(err => {
+      if (err) {
+        return res.redirect('/dashboard'); 
+      } 
+      res.clearCookie('connect.sid'); res.redirect('/login'); 
+    }); 
+});
 
 class MongoError extends Error {
   constructor(message, mongoError) {
