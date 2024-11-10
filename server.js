@@ -3,8 +3,7 @@ require('express-async-errors');
 const app = express();
 const mongoDb = require('./src/utils/mongodb');
 const HttpStatus = require('http-status-codes');
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 
 const port = 3000;
 const session = require('express-session'); 
