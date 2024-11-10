@@ -31,7 +31,7 @@ const oAuthCallback = async ({ query: { code } }, res) => {
           access_token: token
         }
       });
-
+      req.session.id = userUpsertResponse.githubId;
       res.redirect(`/warranties/dashboard?id=${userUpsertResponse.githubId}`);
     })
     .catch((err) => res.status(500).json({ err: err.message }));
