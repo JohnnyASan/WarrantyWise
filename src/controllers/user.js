@@ -26,6 +26,7 @@ const createOrUpdate = async (req, res) => {
         axios.get('https://api.github.com/user', opts)
         .then((_res) => { _res.login, _res.avatar_url, _res.id})
         .then(async (userDetails) => {
+            console.log(userDetails);
             const user = {
                 username: userDetails.login,
                 profileImage: userDetails.avatar_url,
