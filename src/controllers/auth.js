@@ -29,6 +29,7 @@ const oAuthCallback = async ({ query: { code } }, res) => {
       // eslint-disable-next-line no-console
       console.log('My token:', token);
       var userUpsertResponse = await userController.createOrUpdate({ params: { access_token: token}});
+      console.log(userUpsertResponse);
 
       res.redirect(`/dashboard?userId=${userUpsertResponse.githubId}`);
     })
