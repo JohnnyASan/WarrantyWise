@@ -9,6 +9,6 @@ router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
  
 router.use('/warranties', require('./warranties'));
-router.use('/auth', require('./auth'));
+router.use('/', require('./auth'));
 
 module.exports = router;
